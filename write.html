@@ -19,7 +19,35 @@ body {
 
   <div id="article-content"></div>
   <p>Write an article here:</p>
-  <textarea id="userContent" rows="5" cols="30"></textarea>
-  <button onclick="submitArticle()">Submit Article</button>
+  <style>
+    #editor-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 200px;
+    }
+
+    #editor {
+      padding: 10px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+  </style>
+  <div id="editor-container">
+    <div contenteditable="true" id="editor"></div>
+  </div>
+  <button onclick="makeBold()">Bold</button>
+  <button onclick="makeItalic()">Italic</button>
+  <button onclick="makeUnderline()">Underline</button>
+  <script src="writescript.js"></script>
 </body>
 </html>
