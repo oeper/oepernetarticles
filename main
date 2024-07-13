@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+</style>
+<title>oeper.net Articles</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<body style="background-color: #444444;">
+
+
+<p style="font-size: 40px; font-family: verdana, bold;">Welcome to oeper.net articles</p>
+
+<p>Find articles about almost every topic here.</p>
+
+<script async src="https://cse.google.com/cse.js?cx=0e23cefc62990868e">
+</script>
+<div class="gcse-search"></div>
+
+</body>
+</html>
+
+
