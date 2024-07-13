@@ -1,24 +1,12 @@
-const inappropriateWords = ["drakey snakey", "pussy", "skbidi toilet"]; // Replace with your list of inappropriate words
+// Function to simulate loading an article
+function showArticle(articleId) {
+  const articleContent = "This is the content of article " + articleId + ". (This is simulated content, actual implementation would fetch from a database)";
+  document.getElementById("article-content").textContent = articleContent;
+}
 
-function submitContent() {
-  const userContent = document.getElementById("userContent").value.toLowerCase(); // Get user input and convert to lowercase for case-insensitive matching
-  let isBanned = false;
-
-  for (const word of inappropriateWords) {
-    if (userContent.includes(word)) {
-      isBanned = true;
-      alert("Bro did NOT just get baned from an article website😭🙏");
-      break;
-    }
-  }
-
-  if (!isBanned) {
-    alert("Thank you for your submission!"); // Simulates successful submission (no actual storage)
-  }
-
-  // Simulate a banned user by disabling the textarea and button
-  if (isBanned) {
-    document.getElementById("userContent").disabled = true;
-    document.querySelector("button").disabled = true;
-  }
+// Function to simulate submitting an article (limited functionality, doesn't create new pages)
+function submitArticle() {
+  const userContent = document.getElementById("userContent").value;
+  alert("Thank you for your submission! (This is a simulated message, actual implementation would store the article)");
+  document.getElementById("userContent").value = ""; // Clear the textarea after submission
 }
