@@ -18,6 +18,33 @@ body {
 
 <p style="font-size: 20px; font-family: verdana, bold;">Devbuild I specs </p>
 
+
+    <input type="text" id="searchWord" placeholder="Enter word to search">
+    <button onclick="search()">Search</button>
+    <div id="results"></div>
+    <script>
+        function search() {
+            const searchWord = document.getElementById("searchWord").value.toLowerCase();
+            const bodyText = document.body.textContent.toLowerCase();
+            const matches = bodyText.matchAll(new RegExp(searchWord, "g"));
+
+            let resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            if (matches) {
+                for (const match of matches) {
+                    const index = match.index;
+                    const matchText = bodyText.substring(index, index + searchWord.length);
+                    resultsDiv.innerHTML += `<p>Found "${matchText}" at index ${index}</p>`;
+                }
+            } else {
+                resultsDiv.innerHTML = "<p>No matches found.</p>";
+            }
+        }
+    </script>
+
+
+    
 <p>CPU: AMD Ryzen 7 5700G</p>
 <p>Cores: 8</p>
 <p>Threads: 16</p>
