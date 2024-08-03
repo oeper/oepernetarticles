@@ -52,6 +52,13 @@ body {
 <br>
 <p>Wallpaper</p>
 <img src="img/db1wp.jpg" alt="Devbuild I wallpaper (1920x1080)">
+<br>
+        <p>This page was last updated on: <span id="lastUpdated"></span></p>
+    <script>
+        const lastUpdatedElement = document.getElementById("lastUpdated");
+        const now = new Date();
+        lastUpdatedElement.textContent = now.toLocaleString();
+    </script>
 
 </body>
 </html>
