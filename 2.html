@@ -18,8 +18,7 @@ body {
 
 <p style="font-size: 20px; font-family: verdana, bold;">Devbuild I specs </p>
 
-
-    <input type="text" id="searchWord" placeholder="Enter word to search">
+    <input type="text" id="searchWord" placeholder="Search Page">
     <button onclick="search()">Search</button>
     <div id="results"></div>
     <script>
@@ -32,17 +31,30 @@ body {
             resultsDiv.innerHTML = "";
 
             if (matches) {
-                for (const match of matches) {
-                    const index = match.index;
-                    const matchText = bodyText.substring(index, index + searchWord.length);
-                    resultsDiv.innerHTML += `<p>Found "${matchText}" at index ${index}</p>`;
+                const textNodes = document.body.childNodes;
+                for (const textNode of textNodes) {
+                    if (textNode.nodeType === Node.TEXT_NODE) {
+                        const textContent = textNode.textContent.toLowerCase();
+                        const matchIndices = [...textContent.matchAll(new RegExp(searchWord, "g"))].map(match => match.index);
+                        if (matchIndices.length > 0) {
+                            const splitText = textContent.split("");
+                            for (const index of matchIndices) {
+                                splitText[index] = `<span class="highlight">${splitText[index]}</span>`;
+                            }
+                            textNode.textContent = splitText.join("");
+                        }
+                    }
                 }
             } else {
                 resultsDiv.innerHTML = "<p>No matches found.</p>";
             }
         }
     </script>
-
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
 
     
 <p>CPU: AMD Ryzen 7 5700G</p>
