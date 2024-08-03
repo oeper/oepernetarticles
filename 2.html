@@ -12,50 +12,11 @@ body {
 </style>
 <title>Devbuild I specs</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <body>
 <body style="background-color: #444444;">
 
-
-<input type="text" id="searchWord" placeholder="Search page...">
-    <button onclick="search()">Search</button>
-    <div id="results"></div>
-    <script>
-        function search() {
-            const searchWord = document.getElementById("searchWord").value.toLowerCase();
-            const bodyText = document.body.textContent.toLowerCase();
-            const matches = bodyText.matchAll(new RegExp(searchWord, "g"));
-
-            let resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML = "";
-
-            if (matches) {
-                const textNodes = document.body.childNodes;
-                for (const textNode of textNodes) {
-                    if (textNode.nodeType === Node.TEXT_NODE) {
-                        const textContent = textNode.textContent.toLowerCase();
-                        const matchIndices = [...textContent.matchAll(new RegExp(searchWord, "g"))].map(match => match.index);
-                        if (matchIndices.length > 0) {
-                            let newText = "";
-                            let index = 0;
-                            for (const matchIndex of matchIndices) {
-                                newText += textContent.substring(index, matchIndex) + `<span class="highlight">${textContent.substring(matchIndex, matchIndex + searchWord.length)}</span>`;
-                                index = matchIndex + searchWord.length;
-                            }
-                            newText += textContent.substring(index);
-                            textNode.textContent = newText;
-                        }
-                    }
-                }
-            } else {
-                resultsDiv.innerHTML = "<p>No matches found.</p>";
-            }
-        }
-    </script>
-    <style>
-        .highlight {
-            background-color: yellow;
-        }
-    </style>
-
+<p style="font-size: 20px; font-family: verdana, bold;">Devbuild I specs</p>
     
 <p>CPU: AMD Ryzen 7 5700G</p>
 <p>Cores: 8</p>
