@@ -12,13 +12,10 @@ body {
 </style>
 <title>Devbuild I specs</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>
 <body style="background-color: #444444;">
 
 
-<p style="font-size: 20px; font-family: verdana, bold;">Devbuild I specs </p>
-
-    <input type="text" id="searchWord" placeholder="Search Page">
+<input type="text" id="searchWord" placeholder="Search page...">
     <button onclick="search()">Search</button>
     <div id="results"></div>
     <script>
@@ -37,11 +34,14 @@ body {
                         const textContent = textNode.textContent.toLowerCase();
                         const matchIndices = [...textContent.matchAll(new RegExp(searchWord, "g"))].map(match => match.index);
                         if (matchIndices.length > 0) {
-                            const splitText = textContent.split("");
-                            for (const index of matchIndices) {
-                                splitText[index] = `<span class="highlight">${splitText[index]}</span>`;
+                            let newText = "";
+                            let index = 0;
+                            for (const matchIndex of matchIndices) {
+                                newText += textContent.substring(index, matchIndex) + `<span class="highlight">${textContent.substring(matchIndex, matchIndex + searchWord.length)}</span>`;
+                                index = matchIndex + searchWord.length;
                             }
-                            textNode.textContent = splitText.join("");
+                            newText += textContent.substring(index);
+                            textNode.textContent = newText;
                         }
                     }
                 }
